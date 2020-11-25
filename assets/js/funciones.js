@@ -78,9 +78,9 @@ $( ".AddSalida" ).click(function(e) {
 
 
 
-/*$( ".simple-link" ).click(function(e) {
+$( ".simple-link" ).click(function(e) {
   e.preventDefault();
 	e.stopPropagation();
   var href = $(this).attr('href');
   $("#content-area").load(href);
-});*/
+});
