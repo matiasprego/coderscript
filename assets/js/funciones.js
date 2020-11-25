@@ -68,7 +68,7 @@ document.getElementById("CloseBtn").addEventListener("click", function off() {
   });
 
 document.getElementById("AddEntrada").addEventListener("click", function () {
-  console.log("Hola");
+
   document.getElementById("overlay").style.display = "block";
   document.getElementById("entrada").checked = true;
 });
