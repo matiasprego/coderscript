@@ -59,20 +59,19 @@ crearTabla();
 
 // Botones principales
 
-document.getElementById("AddBtn").addEventListener("click", function on() {
+$( ".AddBtn" ).click(function(e) {
     document.getElementById("overlay").style.display = "block";
   });
 
-document.getElementById("CloseBtn").addEventListener("click", function off() {
+$( ".CloseBtn" ).click(function(e) {
     document.getElementById("overlay").style.display = "none";
   });
 
-document.getElementById("AddEntrada").addEventListener("click", function () {
-
+$( ".AddEntrada" ).click(function(e) {
   document.getElementById("overlay").style.display = "block";
   document.getElementById("entrada").checked = true;
 });
-document.getElementById("AddSalida").addEventListener("click", function () {
+$( ".AddSalida" ).click(function(e) {
   document.getElementById("overlay").style.display = "block";
   document.getElementById("salida").checked = true;
 });
