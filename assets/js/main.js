@@ -8,6 +8,7 @@
 
 	var	$window = $(window),
 		$body = $('body'),
+		$content = $('#content-area'),
 		$wrapper = $('#wrapper'),
 		$header = $('#header'),
 		$banner = $('#banner');
@@ -289,10 +290,11 @@
 				// Hide.
 					$menu._hide();
 
-				// Redirect.
-					window.setTimeout(function() {
+				// Load.
+					/*window.setTimeout(function() {
 						window.location.href = href;
-					}, 250);
+					}, 250);*/
+					$("#content-area").load(href);
 
 			});
 

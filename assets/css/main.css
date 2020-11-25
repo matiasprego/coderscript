@@ -1860,6 +1860,9 @@ input, select, textarea {
 		color:black;
 		background:blue;
 	}
+	#banner > .inner {
+		width:80%;
+	}
 /* Form */
 
 	form {
@@ -3751,6 +3754,9 @@ input, select, textarea {
 		}
 
 /* Footer */
+	#footer {
+		padding-bottom:90px;
+	}
 
 	#footer .copyright {
 		font-size: 0.8em;

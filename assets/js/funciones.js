@@ -76,3 +76,4 @@ document.getElementById("AddSalida").addEventListener("click", function () {
   document.getElementById("overlay").style.display = "block";
   document.getElementById("salida").checked = true;
 });
+

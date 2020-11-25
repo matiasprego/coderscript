@@ -169,7 +169,8 @@
 									if (target == '_blank')
 										window.open(href);
 									else
-										window.location.href = href;
+										//window.location.href = href;
+										$("#content-area").load(href);
 
 								}, config.delay + 10);
 
