@@ -295,7 +295,6 @@
 						window.location.href = href;
 					}, 250);*/
 					$("#content-area").load(href);
-
 			});
 
 		$menu
