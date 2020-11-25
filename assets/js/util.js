@@ -164,7 +164,9 @@
 								$this._hide();
 
 							// Load
-								$("#content-area").load(href);
+							$.get(href, function(data, status){
+								$('#content-area').html(data);
+							  });
 
 						});
 

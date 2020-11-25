@@ -79,8 +79,26 @@ $( ".AddSalida" ).click(function(e) {
 
 
 $( ".simple-link" ).click(function(e) {
+  console.log("entre");
   e.preventDefault();
 	e.stopPropagation();
   var href = $(this).attr('href');
-  $("#content-area").load(href);
+  $.get(href, function(data, status){
+    $('#content-area').html(data);
+  });
+});
+
+$( document ).ready(function() {
+  $.get("principal.html", function(data, status){
+    $('#content-area').html(data);
+    $( ".simple-link" ).click(function(e) {
+      console.log("entre");
+      e.preventDefault();
+      e.stopPropagation();
+      var href = $(this).attr('href');
+      $.get(href, function(data, status){
+        $('#content-area').html(data);
+      });
+    });
+  });
 });

@@ -253,7 +253,11 @@
 					/*window.setTimeout(function() {
 						window.location.href = href;
 					}, 250);*/
-					$("#content-area").load(href);
+					$.get(href, function(data, status){
+						$('#content-area').html(data);
+
+						
+					  });
 			});
 
 		$menu
