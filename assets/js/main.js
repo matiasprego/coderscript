@@ -172,10 +172,8 @@
 									$this.addClass('is-transitioning');
 									$wrapper.addClass('is-transitioning');
 
-								// Redirect.
-									window.setTimeout(function() {
-										location.href = href;
-									}, 500);
+								// Load
+								$("#content-area").load(href);
 
 							}
 
