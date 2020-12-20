@@ -9,9 +9,6 @@ function allFunctions() {
     var listado = [];
   }
 
-  // Intento crear tabla
-  crearTabla();
-
     // Definición de variables
   var tipoMovimiento = ["Anual", "Mensual", "Semanal"];
   var tipoOperacion = ["Gasto", "Ingreso"];
@@ -109,7 +106,7 @@ function crearTabla() {
   var listado = JSON.parse(datosStorage);
 
   if (listado){
-    console.log(listado);
+    //console.log(listado);
     var htmlTable = '';
     $.each( listado, function( key, row ) {
       htmlTable += '<tr>';
@@ -119,9 +116,21 @@ function crearTabla() {
       htmlTable += '<td>'+ row.repeticion +'</td>';
       htmlTable += '<td>'+ row.moneda +'</td>';
       htmlTable += '<td>'+ row.amount +'</td>';
-      htmlTable += '<td>'+ row.amount +'</td>';
+      if(row.repeticion == "Semanal") {
+        htmlTable += '<td>'+ (row.amount*52) +'</td>';
+      }
+      else if(row.repeticion == "Mensual") {
+        htmlTable += '<td>'+ (row.amount*12) +'</td>';
+      }
+      else if(row.repeticion == "Diario") {
+        htmlTable += '<td>'+ (row.amount*365) +'</td>';
+      }
+      else {
+        htmlTable += '<td>'+ row.amount +'</td>';
+      }
       htmlTable += '</tr>';
     });
+    
     $('tbody').append(htmlTable);
   }
 }
@@ -136,7 +145,7 @@ $( document ).ready(function() {
       $.get(href, function(data, status){
         $('#content-area').html(data);
         allFunctions();
-        crearTabla();
+        //crearTabla();
       });
 
     });
