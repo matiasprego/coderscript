@@ -58,6 +58,7 @@ function allFunctions() {
       document.getElementById("overlay").style.display = "none";
 
       // Actualizo tabla
+      $('tbody').html("");
       crearTabla();
 
     });
