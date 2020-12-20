@@ -105,18 +105,17 @@ function calculo() {
   let totalResta = 0;
   let totalSuma = 0;
   if (localStorage.getItem('totalResta')) {
-    totalResta = localStorage.getItem('totalResta');
+    totalResta = parseInt(localStorage.getItem('totalResta'));
   }
   if (localStorage.getItem('totalSuma')) {
-    totalSuma = localStorage.getItem('totalSuma');
+    totalSuma = parseInt(localStorage.getItem('totalSuma'));
   }
   var gastosMensuales = totalResta / 12;
   var ingresosMensuales = totalSuma / 12;
   var total = ingresosMensuales - gastosMensuales;
-  $('montoGastos').append(gastosMensuales);
-  $('montoIngresos').append(ingresosMensuales);
-  $('montoBalance').append(total);
-
+  $('montoGastos').html(gastosMensuales);
+  $('montoIngresos').html(ingresosMensuales);
+  $('montoBalance').html(total);
 }
 
 // Tomar datos
@@ -128,13 +127,6 @@ function crearTabla() {
   let totalResta = 0;
   let totalSuma = 0;
   if (listado) {
-    if (localStorage.getItem('totalResta')) {
-      totalResta = localStorage.getItem('totalResta');
-    }
-    if (localStorage.getItem('totalSuma')) {
-      totalSuma = localStorage.getItem('totalSuma');
-    }
-    //console.log(listado);
     var htmlTable = '';
     $.each(listado, function (key, row) {
       htmlTable += '<tr>';
@@ -171,9 +163,9 @@ function crearTabla() {
       else {
         htmlTable += '<td>' + row.amount + '</td>';
         if (row.tipoDato == "entrada") {
-          totalSuma += row.amount;
+          totalSuma += parseInt(row.amount);
         } else if (row.tipoDato == "salida") {
-          totalResta += row.amount;
+          totalResta += parseInt(row.amount);
         }
       }
       htmlTable += '</tr>';
@@ -196,8 +188,7 @@ $(document).ready(function () {
       $.get(href, function (data, status) {
         $('#content-area').html(data);
         allFunctions();
-        //crearTabla();
-      });
+        });
 
     });
   });
