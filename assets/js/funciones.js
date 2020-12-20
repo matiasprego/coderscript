@@ -1,5 +1,17 @@
 allFunctions();
 function allFunctions() {
+
+  // Chequeo si tengo guardado en localstore los datosStorage
+  if(localStorage.getItem('dato')){
+    var listado = JSON.parse(localStorage.getItem('dato'));
+    crearTabla();
+  } else {
+    var listado = [];
+  }
+
+  // Intento crear tabla
+  crearTabla();
+
     // Definición de variables
   var tipoMovimiento = ["Anual", "Mensual", "Semanal"];
   var tipoOperacion = ["Gasto", "Ingreso"];
@@ -37,11 +49,20 @@ function allFunctions() {
 
   function formValues() {
     $( "#btn-form" ).click(function() {
-      var camposForm = $( ":input" ).serializeArray();
-      console.log(camposForm);
+      var camposForm = {};
+      $.each($('form#form-entry').serializeArray(), function() {
+          camposForm[this.name] = this.value;
+      });
+      // LO AGREGO AL ARRAY DE OBJETOS DEL LISTADO
+      console.log('[camposForm]', camposForm);
+      listado.push(camposForm);
       //guardar datos
-      localStorage.setItem("dato", JSON.stringify(camposForm));
+      localStorage.setItem("dato", JSON.stringify(listado));
       document.getElementById("overlay").style.display = "none";
+
+      // Actualizo tabla
+      crearTabla();
+
     });
   }
 
@@ -49,14 +70,6 @@ function allFunctions() {
   //$( "select" ).change( formValues );
   formValues();
 
-  // Tomar datos
-
-  function crearTabla() {
-    var datosStorage = localStorage.getItem("dato");
-    var listado = JSON.parse(datosStorage);
-    console.log(listado);
-  }
-  crearTabla();
 
 
   // Botones principales
@@ -81,7 +94,6 @@ function allFunctions() {
 
 
   $( ".simple-link" ).click(function(e) {
-    console.log("entre");
     e.preventDefault();
     e.stopPropagation();
     var href = $(this).attr('href');
@@ -91,18 +103,42 @@ function allFunctions() {
   });
 }
 
+// Tomar datos
+function crearTabla() {
+  var datosStorage = localStorage.getItem("dato");
+  var listado = JSON.parse(datosStorage);
+
+  if (listado){
+    console.log(listado);
+    var htmlTable = '';
+    $.each( listado, function( key, row ) {
+      htmlTable += '<tr>';
+      htmlTable += '<td>#</td>';
+      htmlTable += '<td>'+ row.nombre +'</td>';
+      htmlTable += '<td>'+ row.tipoDato +'</td>';
+      htmlTable += '<td>'+ row.repeticion +'</td>';
+      htmlTable += '<td>'+ row.moneda +'</td>';
+      htmlTable += '<td>'+ row.amount +'</td>';
+      htmlTable += '<td>'+ row.amount +'</td>';
+      htmlTable += '</tr>';
+    });
+    $('tbody').append(htmlTable);
+  }
+}
+
 $( document ).ready(function() {
   $.get("principal.html", function(data, status){
     $('#content-area').html(data);
     $( ".simple-link" ).click(function(e) {
-      console.log("entre");
       e.preventDefault();
       e.stopPropagation();
       var href = $(this).attr('href');
       $.get(href, function(data, status){
         $('#content-area').html(data);
         allFunctions();
+        crearTabla();
       });
+
     });
   });
 });
