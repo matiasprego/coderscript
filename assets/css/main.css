@@ -59,6 +59,9 @@ mark {
 	background-color: transparent;
 	color: inherit;
 }
+form p {
+	margin-bottom:5px;
+}
 
 input::-moz-focus-inner {
 	border: 0;
