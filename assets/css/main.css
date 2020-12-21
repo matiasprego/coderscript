@@ -2811,6 +2811,9 @@ input, select, textarea {
 			position: relative;
 			width: 40%;
 		}
+		.tiles article:last-child {
+			width:100%;
+		}
 
 			.tiles article .image {
 				display: none;

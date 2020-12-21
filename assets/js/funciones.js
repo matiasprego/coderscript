@@ -114,6 +114,9 @@ function calculo() {
   $('#montoGastos').append(gastosMensuales);
   $('#montoIngresos').append(ingresosMensuales);
   $('#montoBalance').append(total);
+  $('#saleMes').append(gastosMensuales);
+  $('#entraMes').append(ingresosMensuales);
+  $('#balanceTotal').append(total);
 }
 
 // Tomar datos
