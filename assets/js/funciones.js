@@ -113,9 +113,10 @@ function calculo() {
   var gastosMensuales = totalResta / 12;
   var ingresosMensuales = totalSuma / 12;
   var total = ingresosMensuales - gastosMensuales;
-  $('montoGastos').html(gastosMensuales);
-  $('montoIngresos').html(ingresosMensuales);
-  $('montoBalance').html(total);
+
+  $('montoGastos').append(gastosMensuales);
+  $('montoIngresos').append(ingresosMensuales);
+  $('montoBalance').append(total);
 }
 
 // Tomar datos
