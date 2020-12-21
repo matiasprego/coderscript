@@ -14,9 +14,9 @@ function allFunctions() {
   var tipoMovimiento = ["Anual", "Mensual", "Semanal"];
   var tipoOperacion = ["Gasto", "Ingreso"];
 
-  var monedasBasicas = ["Pesos", "Dólares"];
-  var monedasSecundarias = ["Euros", "Reales"];
-  var todasMonedas = monedasBasicas.concat(monedasSecundarias);
+  //var monedasBasicas = ["Pesos", "Dólares"];
+  //var monedasSecundarias = ["Euros", "Reales"];
+  //var todasMonedas = monedasBasicas.concat(monedasSecundarias);
 
   // Ingreso de datos
   class nuevoDato {
@@ -31,7 +31,7 @@ function allFunctions() {
     }
   }
 
-  // Manejo de monedas
+  /*// Manejo de monedas
   function nuevaMoneda(nombre, cotizacion) {
     this.nombre = nombre;
     this.cotizacion = cotizacion;
@@ -41,7 +41,7 @@ function allFunctions() {
     this.monto = monto;
     var cambioMoneda = this.moneda[1];
     var resultado = monto.cambioMoneda;
-  }
+  }*/
 
   // Manejo del form
 
@@ -101,6 +101,20 @@ function allFunctions() {
   });
 }
 
+function nuevoIngreso(e) {
+  document.getElementById("overlay").style.display = "block";
+}
+
+function nuevaEntrada(e) {
+  document.getElementById("overlay").style.display = "block";
+  document.getElementById("entrada").checked = true;
+}
+
+function nuevaSalida(e) {
+  document.getElementById("overlay").style.display = "block";
+  document.getElementById("salida").checked = true;
+}
+
 function calculo() {
   let totalResta = 0;
   let totalSuma = 0;
@@ -113,10 +127,9 @@ function calculo() {
   var gastosMensuales = totalResta / 12;
   var ingresosMensuales = totalSuma / 12;
   var total = ingresosMensuales - gastosMensuales;
-
-  $('montoGastos').append(gastosMensuales);
-  $('montoIngresos').append(ingresosMensuales);
-  $('montoBalance').append(total);
+  $('montoGastos').html(gastosMensuales);
+  $('montoIngresos').html(ingresosMensuales);
+  $('montoBalance').html(total);
 }
 
 // Tomar datos
@@ -135,7 +148,8 @@ function crearTabla() {
       htmlTable += '<td>' + row.nombre + '</td>';
       htmlTable += '<td>' + row.tipoDato + '</td>';
       htmlTable += '<td>' + row.repeticion + '</td>';
-      htmlTable += '<td>' + row.moneda + '</td>';
+      //htmlTable += '<td>' + row.moneda + '</td>';
+      htmlTable += '<td>USD</td>';
       htmlTable += '<td>' + row.amount + '</td>';
       if (row.repeticion == "Semanal") {
         htmlTable += '<td>' + (row.amount * 52) + '</td>';
@@ -189,7 +203,7 @@ $(document).ready(function () {
       $.get(href, function (data, status) {
         $('#content-area').html(data);
         allFunctions();
-        });
+      });
 
     });
   });

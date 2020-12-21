@@ -29,14 +29,10 @@
 					<label class="opcion-radio entrada-radio" for="entrada"></label>
 					<input id="salida" type="radio" name="tipoDato" value="salida" />
 					<label class="opcion-radio salida-radio"for="salida"></label><br />
-						Cantidad<input type="text" name="amount"><br>
+						
 					<div class="row">
 						<div class="column">
-							<label for="cars">Moneda</label>
-							<select name="moneda" id="moneda">
-								<option value="pesos">Pesos ($)</option>
-								<option value="dolares">Dólares (USD)</option>
-								</select>
+							Cantidad<input type="text" name="amount">
 						</div>
 						<div class="column">
 							<label for="repeticion">Repetición</label>
@@ -61,10 +57,10 @@
 		<div id="bottom-menu">
 			<div class="row">
 				<div class="col-4">
-					<a href="#" class="AddEntrada">Nuevo ingreso</a>
+					<a onclick="nuevaEntrada()">Nuevo ingreso</a>
 				</div>
 				<div class="col-4">
-					<a href="#" class="AddSalida">Nueva salida</a>
+					<a onclick="nuevaSalida()">Nueva salida</a>
 				</div>
 				<div class="col-4">
 					<a href="registros.html" class="simple-link">Ver registros</a>
