@@ -198,3 +198,6 @@ $(document).ready(function () {
   });
 });
 
+function vaciar() {
+  localStorage.clear();
+}
