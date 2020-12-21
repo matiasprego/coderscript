@@ -5,7 +5,6 @@ function allFunctions() {
   if (localStorage.getItem('dato')) {
     var listado = JSON.parse(localStorage.getItem('dato'));
     crearTabla();
-    calculo();
   } else {
     var listado = [];
   }
@@ -60,6 +59,7 @@ function allFunctions() {
 
       // Actualizo tabla
       crearTabla();
+      calculo();
 
     });
   }
@@ -72,22 +72,6 @@ function allFunctions() {
 
   // Botones principales
 
-  $(".AddBtn").click(function (e) {
-    document.getElementById("overlay").style.display = "block";
-  });
-
-  $(".CloseBtn").click(function (e) {
-    document.getElementById("overlay").style.display = "none";
-  });
-
-  $(".AddEntrada").click(function (e) {
-    document.getElementById("overlay").style.display = "block";
-    document.getElementById("entrada").checked = true;
-  });
-  $(".AddSalida").click(function (e) {
-    document.getElementById("overlay").style.display = "block";
-    document.getElementById("salida").checked = true;
-  });
 
 
 
@@ -127,9 +111,9 @@ function calculo() {
   var gastosMensuales = totalResta / 12;
   var ingresosMensuales = totalSuma / 12;
   var total = ingresosMensuales - gastosMensuales;
-  $('montoGastos').html(gastosMensuales);
-  $('montoIngresos').html(ingresosMensuales);
-  $('montoBalance').html(total);
+  $('#montoGastos').append(gastosMensuales);
+  $('#montoIngresos').append(ingresosMensuales);
+  $('#montoBalance').append(total);
 }
 
 // Tomar datos
@@ -206,6 +190,8 @@ $(document).ready(function () {
       });
 
     });
+    calculo();
+
   });
 });
 
